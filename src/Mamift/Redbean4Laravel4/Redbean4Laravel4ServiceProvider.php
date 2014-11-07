@@ -1,6 +1,6 @@
 <?php namespace Mamift\Redbean4Laravel4;
 
-include 'rb.php';
+// include 'rb.php';
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades as Laravel;
