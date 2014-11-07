@@ -11,12 +11,11 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*",
-        "gabordemooij/redbean": "3.5.1"
+        "illuminate/support": "4.2.*"
     },
     "autoload": {
-        "classmap": [
-            "src/Mamift"
+        "files": [
+            "src/Mamift/Redbean4Laravel4/rb.php"
         ],
         "psr-0": {
             "Mamift\\Redbean4Laravel4": "src/"
