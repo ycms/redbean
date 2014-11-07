@@ -1,0 +1,25 @@
+{
+    "name": "mamift/redbean4-laravel4",
+    "description": "A Laravel 4 implementation of Redbean 4.",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "mamift",
+            "email": "mamift@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "files": [
+            "src/Mamift/Redbean4Laravel4/rb.php"
+        ],
+        "psr-0": {
+            "Mamift\\Redbean4Laravel4": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
