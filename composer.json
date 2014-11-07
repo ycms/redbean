@@ -15,7 +15,7 @@
     },
     "autoload": {
         "classmap": [
-            "src/include"
+            "src/Mamift"
         ],
         "psr-0": {
             "Mamift\\Redbean4Laravel4": "src/"
