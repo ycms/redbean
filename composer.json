@@ -14,8 +14,8 @@
         "illuminate/support": "4.2.*"
     },
     "autoload": {
-        "files": [
-            "src/Mamift/Redbean4Laravel4/rb.php"
+        "classmap": [
+            "src/include"
         ],
         "psr-0": {
             "Mamift\\Redbean4Laravel4": "src/"
