@@ -31,7 +31,7 @@ An example:
 
 ### Why use RedBean with Laravel?
 
-RedBean is a very flexible way to flesh-out a database without having to worry about how your table is structured or foreign-key relations. For this reason, it is a neat way to rapidly prototype the backend for a Laravel app. You could use RedBean as a lazy substitute for Laravel's Schema Builder and forego seeding for example, as you can define the schema and seed the table with values in the one migration step.
+RedBean is a very flexible way to flesh-out a database without having to worry about foreign-key relations or how your table is structured; it is 'schema-less' in a sense, in that it will build the appropriate database and table structures without you having to worry about the details. For this reason, it is a neat way to rapidly prototype the backend for a Laravel app. You could use RedBean as a lazy substitute for Laravel's Schema Builder and forego seeding in a separate step for example, as you can define the schema and seed the table with values in the one migration step.
 
 In the above example where the following line is:
 
@@ -43,11 +43,13 @@ Note how it doesn't use the built-in [ENUM] data type as a column type; this ena
 
 RedBean will also determine the appropriate data type depending on the values of the properties of your beans. In the above example, **$user['description']** is stored as TEXT and **$user->username** is stored as VARCHAR(255).
 
-When reverting a Laravel migration, you may need to also use Schema builder methods such as **Schema::drop('user')** or **Schema::drop('gender')**, as RedBean does not provide a way to delete the table schema. Instead it allows you to erase all instances of a bean (equivalent to deleting all rows inside a table) using **R::wipe('user')**. RedBean does allow you to destroy all tables altogether in a single step using **R::nuke()**, but this will destroy everything inside the database, including the *migrations* table.
+When reverting a Laravel migration, you may need to also use Schema builder methods such as **Schema::drop('user')** or **Schema::drop('gender')**, as RedBean does not provide a way to delete the table schema. Instead it allows you to erase all instances of a bean (equivalent to deleting all rows inside a table) using **R::wipe('user')**. 
 
-### A note on its implementation
+However, RedBean does allow you to destroy all tables altogether in a single step using **R::nuke()**, but this will destroy everything inside the database, including the *migrations* table.
 
-Due to the way the author uses PHP namespaces (it doesn't appear to be PSR-4 compliant), he does not provide his own composer.json and as such, the rb.php file (the file that RedBeanPHP is commonly distributed in) does not appear to be autoloadable by Laravel.
+### A note on how this package exposes RedBean in Laravel
+
+Due to the way the author of RedBean uses PHP namespaces (it doesn't appear to be PSR-4 compliant), he does not provide his own composer.json and as such, the rb.php file (the file that RedBeanPHP is commonly distributed in) does not appear to be autoloadable by Laravel.
 
 What this package does is load rb.php for each request. Under the "autoload" JSON object inside composer.json, rb.php is specified as part of the "files" array:
 
@@ -63,3 +65,7 @@ A quote from the [Composer documentation](https://getcomposer.org/doc/04-schema.
 >If you want to require certain files explicitly on every request then you can use the 'files' autoloading mechanism. This is useful if your package includes PHP functions that cannot be autoloaded by PHP.
 
 Due to rb.php being loaded on each request, there may be a slight performance penalty incurred.
+
+#### Models
+
+While RedBean itself is not autoloadable via PSR-4, [RedBean models](http://redbeanphp.com/models) should be.
