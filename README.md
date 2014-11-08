@@ -39,7 +39,7 @@ In the above example where the following line is:
 
 RedBean will create a separate table, 'gender', and include an appropriate primary key (an AUTO_INCREMENTING 'ID' column when you're using MySQL). Whenever you use R::enum() again, (like R::enum('gender:female') for instance), then RedBean will add another 'female' record inside the 'gender' table. 
 
-Note how it doesn't use the built-in [ENUM] data type as a column type; this enables you to use define another bean (table) which can use the same enumeration and set of values defined therein.
+Note how it doesn't use the built-in [ENUM] data type as a column type; this enables you to define another bean (table) which can use the same set of values.
 
 RedBean will also determine the appropriate data type depending on the values of your beans. In the above example, $user['description'] is stored as TEXT and $user->username is stored as VARCHAR(255).
 
