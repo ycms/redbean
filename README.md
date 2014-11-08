@@ -37,15 +37,17 @@ In the above example where the following line is:
 
 	$user->gender = R::enum('gender:male');
 
-RedBean will create a separate table, 'gender', and include an appropriate primary key (an AUTO_INCREMENTING 'ID' column when you're using MySQL). Whenever you use R::enum() again, (like R::enum('gender:female') for instance), then RedBean will add another 'female' record inside the 'gender' table. 
+RedBean will create a separate table, 'gender', and include an appropriate primary key (an **AUTO_INCREMENTING 'ID'** column when you're using MySQL). Whenever you use **R::enum()** again, (like **R::enum('gender:female')** for instance), then RedBean will add another 'female' record inside the 'gender' table. 
 
 Note how it doesn't use the built-in [ENUM] data type as a column type; this enables you to define another bean (table) which can use the same set of values.
 
-RedBean will also determine the appropriate data type depending on the values of your beans. In the above example, $user['description'] is stored as TEXT and $user->username is stored as VARCHAR(255).
+RedBean will also determine the appropriate data type depending on the values of the properties of your beans. In the above example, **$user['description']** is stored as TEXT and **$user->username** is stored as VARCHAR(255).
+
+When reverting a Laravel migration, you may need to also use Schema builder methods such as **Schema::drop('user')** or **Schema::drop('gender')**, as RedBean does not provide a way to delete the table schema. Instead it allows you to erase all instances of a bean (equivalent to deleting all rows inside a table) using **R::wipe('user')**. RedBean does allow you to destroy all tables altogether in a single step using **R::nuke()**, but this will destroy everything inside the database, including the *migrations* table.
 
 ### A note on its implementation
 
-Because the author of RedBeanPHP has not made RedBean completely compatible with Composer (he does not provide his own composer.json due to the way he uses PHP namespaces), the rb.php file (the file that RedBeanPHP is commonly distributed in) does not appear to be autoloadable by Laravel.
+Due to the way the author uses PHP namespaces (it doesn't appear to be PSR-4 compliant), he does not provide his own composer.json and as such, the rb.php file (the file that RedBeanPHP is commonly distributed in) does not appear to be autoloadable by Laravel.
 
 What this package does is load rb.php for each request. Under the "autoload" JSON object inside composer.json, rb.php is specified as part of the "files" array:
 
