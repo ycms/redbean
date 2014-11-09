@@ -65,7 +65,3 @@ A quote from the [Composer documentation](https://getcomposer.org/doc/04-schema.
 >If you want to require certain files explicitly on every request then you can use the 'files' autoloading mechanism. This is useful if your package includes PHP functions that cannot be autoloaded by PHP.
 
 Due to rb.php being loaded on each request, there may be a slight performance penalty incurred.
-
-#### Models
-
-While RedBean itself is not autoloadable via PSR-4, [RedBean models](http://redbeanphp.com/models) should be.
