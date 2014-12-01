@@ -2,3 +2,5 @@
 composer.phar
 composer.lock
 .DS_Store
+redbean4-laravel4.sublime-project
+redbean4-laravel4.sublime-workspace
