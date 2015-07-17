@@ -21,7 +21,7 @@ class Redbean4Laravel4ServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('mamift/redbean4-laravel4');
+		//$this->package('mamift/redbean4-laravel4');
 	}
 
 	/**
